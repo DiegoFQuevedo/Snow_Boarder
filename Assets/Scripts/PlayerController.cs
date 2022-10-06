@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
     [SerializeField] float baseSpeed = 10f;
     Rigidbody2D rb2d;
     SurfaceEffector2D surfaceEffector2D;
+
+    bool canMove = true;
     
     void Start()
     {
@@ -19,8 +21,17 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        RotatePlayer();
-        RespondToBoost();
+        if(canMove)
+        {
+            RotatePlayer();
+            RespondToBoost();
+        }
+        
+    }
+
+    public void DisableControls()
+    {
+        canMove = false;
     }
 
     void RespondToBoost()
